@@ -1,4 +1,4 @@
 # adityaprog.github.io
-theme: jekyll-theme-minimal
-title: Octocat's homepage
-description: Bookmark this to keep an eye on my project updates!
+<br>
+<p>Making Site for a Property seller/Builder.</p>
+<p>Help me complete this project with your contributions. Your contribution will be appreciated.</p>
