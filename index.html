@@ -1,21 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Property Baazaar</title>
-  <link href="style.css" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Property baazaar</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- HEADER -->
   <header>
-    <p>This is a header.</p>
+    <div class="container header-container">
+      <h1 class="logo">Property baazaar</h1>
+      <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#plots">Plots</a>
+        <a href="#booking">Booking</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
-  <main>
-    <h1>Property Bazaar. website...</h1>
-  </main>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h2>Where Your Land Investment Begins</h2>
+      <p>Discover the perfect plot for your future.</p>
+      <a href="#plots" class="cta">Explore Our Plots</a>
+    </div>
+  </section>
+
+  <!-- PLOTS SECTION -->
+  <section id="plots" class="plots-section">
+    <div class="container">
+      <h2>Available Plots</h2>
+      <div class="plots-grid">
+        <!-- Each plot is represented with a card -->
+        <div class="plot-card">
+          <img src="https://via.placeholder.com/300x200" alt="Plot Location 1">
+          <h3>Plot Location 1</h3>
+          <p>Size: 5000 sq.ft. | Price: $50,000</p>
+          <a href="#booking" class="book-btn">Book This Plot</a>
+        </div>
+        <div class="plot-card">
+          <img src="https://via.placeholder.com/300x200" alt="Plot Location 2">
+          <h3>Plot Location 2</h3>
+          <p>Size: 6000 sq.ft. | Price: $60,000</p>
+          <a href="#booking" class="book-btn">Book This Plot</a>
+        </div>
+        <!-- Add more plot cards as needed -->
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING SECTION -->
+  <section id="booking" class="booking-section">
+    <div class="container">
+      <h2>Book Your Favorite Plot</h2>
+      <form id="bookingForm" action="#" method="POST">
+        <div class="form-group">
+          <label for="plot">Plot Selected</label>
+          <select name="plot" id="plot" required>
+            <option value="">Select a Plot</option>
+            <option value="Plot Location 1">Plot Location 1</option>
+            <option value="Plot Location 2">Plot Location 2</option>
+            <!-- Add more options as needed -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Contact Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+        </div>
+        <!-- Payment Section Placeholder -->
+        <div class="form-group">
+          <label for="payment">Payment Details</label>
+          <p>This is a demo. Integrate with your preferred payment gateway.</p>
+          <!-- Button that simulates a payment -->
+          <button type="button" id="payNow" class="pay-btn">Pay Now</button>
+        </div>
+        <!-- Submit Button -->
+        <button type="submit" class="submit-btn">Submit Booking</button>
+      </form>
+      <div id="confirmation" class="confirmation-message"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <h2>About Property baazaar</h2>
+      <p>Property baazaar was created to bring professionalism and ease to land purchasing. Whether you're searching for your future home plot or investing in land, we ensure transparency and quality service.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <form id="contactForm" action="#" method="POST">
+        <div class="form-group">
+          <label for="contactName">Your Name</label>
+          <input type="text" id="contactName" name="contactName" required>
+        </div>
+        <div class="form-group">
+          <label for="contactEmail">Your Email</label>
+          <input type="email" id="contactEmail" name="contactEmail" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
-    <p>This is a footer.  2025 &copy; ADiTyAprog.</p>
+    <div class="container">
+      <p>&copy; 2025 Property baazaar. All Rights Reserved.</p>
+      <p>
+        Follow us:
+        <a href="#">Facebook</a> |
+        <a href="#">Twitter</a> |
+        <a href="#">Instagram</a>
+      </p>
+    </div>
   </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
