@@ -1,5 +1,5 @@
 # adityaprog.github.io
-<a src="https://adityaprog.github.io" target="_blank"> Link to the site. </a>
+**[Link to the site.](https://adityaprog.github.io)**
 <br>
 Author - Aditya Raj.
 <p>Making Site for a Property seller/Builder.</p>
