@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>404 - Page Not Found</title>
+  <style>
+    /* Reset and basic styling */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      background: #0b0c2a;
+      overflow: hidden;
+      position: relative;
+    }
+    /* Canvas for starry background */
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: #0b0c2a;
+    }
+    /* Container for main content */
+    .container {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 5rem;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.5rem;
+      max-width: 600px;
+      margin-bottom: 30px;
+    }
+    a {
+      color: #fff;
+      text-decoration: none;
+      border: 2px solid #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+    a:hover {
+      background: #fff;
+      color: #0b0c2a;
+    }
+    /* Floating astronaut SVG animation */
+    .astronaut {
+      width: 200px;
+      animation: float 4s ease-in-out infinite;
+      margin-bottom: 20px;
+    }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+    /* Audio toggle button */
+    .audio-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 8px 16px;
+      border: none;
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.3s;
+      z-index: 2;
+    }
+    .audio-toggle:hover {
+      background: rgba(255,255,255,0.4);
+    }
+  </style>
+</head>
+<body>
+  <!-- Canvas element for animated stars -->
+  <canvas id="starCanvas"></canvas>
+
+  <!-- Audio control toggle -->
+  <button class="audio-toggle" id="audioToggle">Sound: On</button>
+
+  <div class="container">
+    <!-- Floating Astronaut SVG -->
+    <svg class="astronaut" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32" cy="32" r="30" stroke="white" stroke-width="4" fill="#1a1c3b"/>
+      <path d="M20 40 C 24 44, 40 44, 44 40 C 46 34, 40 28, 32 28 C 24 28, 18 34, 20 40 Z" fill="white"/>
+      <circle cx="32" cy="32" r="6" fill="#0b0c2a" stroke="white" stroke-width="2"/>
+      <line x1="32" y1="6" x2="32" y2="12" stroke="white" stroke-width="2"/>
+      <line x1="32" y1="52" x2="32" y2="58" stroke="white" stroke-width="2"/>
+    </svg>
+    <h1>404</h1>
+    <p>Oops! The page you're looking for drifted into space.</p>
+    <a href="/">Go Back Home</a>
+  </div>
+
+  <!-- Background audio from Google Actions Sound Library (free to use) -->
+  <audio id="spaceAudio" loop>
+    <source src="https://actions.google.com/sounds/v1/ambiences/space.ogg" type="audio/ogg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    // Canvas & Starfield setup
+    const canvas = document.getElementById('starCanvas');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+    const numStars = 200;
+    const baseSpeed = 0.05;  // Base falling speed for stars
+    const parallaxFactor = 0.5; // Adjusts sensitivity to mouse movement
+    let mouseX = 0;
+    let mouseY = 0;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function initStars() {
+      stars = [];
+      for (let i = 0; i < numStars; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 1.5,
+          speed: baseSpeed + Math.random() * 0.5,
+        });
+      }
+    }
+    initStars();
+
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      stars.forEach(star => {
+        // Apply parallax offset based on mouse position
+        const offsetX = (mouseX - canvas.width / 2) * parallaxFactor * 0.001 * star.speed;
+        const offsetY = (mouseY - canvas.height / 2) * parallaxFactor * 0.001 * star.speed;
+        ctx.beginPath();
+        ctx.arc(star.x + offsetX, star.y + offsetY, star.radius, 0, 2 * Math.PI);
+        ctx.fillStyle = "#fff";
+        ctx.fill();
+      });
+    }
+
+    function updateStars() {
+      stars.forEach(star => {
+        star.y += star.speed;
+        if (star.y > canvas.height) {
+          star.y = 0;
+          star.x = Math.random() * canvas.width;
+        }
+      });
+    }
+
+    function animate() {
+      updateStars();
+      drawStars();
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // Update star parallax based on mouse move
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    // Audio controls
+    const audioToggle = document.getElementById('audioToggle');
+    const spaceAudio = document.getElementById('spaceAudio');
+
+    // Attempt to play audio on user interaction
+    document.body.addEventListener('click', () => {
+      if (spaceAudio.paused) {
+        spaceAudio.play().catch(() => {});
+      }
+    });
+
+    audioToggle.addEventListener('click', () => {
+      if (spaceAudio.paused) {
+        spaceAudio.play();
+        audioToggle.textContent = 'Sound: On';
+      } else {
+        spaceAudio.pause();
+        audioToggle.textContent = 'Sound: Off';
+      }
+    });
+  </script>
+</body>
+</html>
