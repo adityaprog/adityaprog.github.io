@@ -23,3 +23,10 @@ document.getElementById('hamburger').addEventListener('click', function () {
   const nav = document.getElementById('mobile-nav');
   nav.classList.toggle('show');
 });
+
+
+document.querySelectorAll('.nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('mobile-nav').classList.remove('show');
+  });
+});

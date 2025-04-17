@@ -278,9 +278,15 @@ footer a:hover {
     font-size: 2em;
     cursor: pointer;
     color: #0275d8;
+    border: none;
+    background: none;
     outline: none;
     -webkit-tap-highlight-color: transparent; 
     transition: transform 0.05s ease;
+  }
+
+  .mobile-menu-icon:focus {
+    outline: none;
   }
   
   .mobile-menu-icon:active {
