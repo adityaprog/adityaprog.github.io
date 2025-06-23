@@ -3,4 +3,4 @@ This is my profile site.
 AUTHOR - Aditya raj.
 <br>
 instagram profile - @a.d.i.t.y.a._raj
-<a href="adityaprog.github.io" target="_blank">link to site</a>
+<a href="https://www.adityaprog.github.io" target="_blank">link to site</a>
