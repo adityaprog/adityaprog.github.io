@@ -14,9 +14,8 @@ body {
 }
 
 header{
-    width:100%;
+    width:100vw;
     height: 10%;
-    padding:1%;
     z-index: 10000;
     position:absolute;
     background-color: rgba(255, 193, 6, 0.4);
@@ -24,7 +23,7 @@ header{
 }
 
 main {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background-color: rgb(224, 251, 255);
   display: flex;
@@ -32,6 +31,24 @@ main {
   align-items: center;
   justify-content: center;
 }
+
+.nav-bar{
+  width: 95%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-list {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-flow: row wrap;
+  list-style: none;
+}
+
 h1 {
   font-size: 6rem;
   color: rgb(0, 0, 0);
