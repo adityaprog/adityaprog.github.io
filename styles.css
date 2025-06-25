@@ -39,7 +39,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-
+  
 }
 
 .nav-list {
@@ -49,6 +49,25 @@ main {
   justify-content: space-evenly;
   flex-flow: row wrap;
   list-style: none;
+}
+
+.links{
+  font-size:2rem;
+  font-weight: 600;
+  color: #c776fd;
+  text-decoration: none;
+  transition:color 1s ease-in-out, text-transform 5s;
+}
+
+.links:hover {
+  color: #f5a623;
+  text-transform: uppercase;
+}
+
+
+.links:active {
+  color: #f5a623;
+  transition: s;
 }
 
 h1 {
